@@ -47,3 +47,6 @@ let comparation: boolean;
         numeroDos = 10;
         comparation = numeroUno <= numeroDos;
         console.log(comparation); //verdadero
+
+        console.log("prueba git221321543sdwadsdsafa"); //verdadero
+        
