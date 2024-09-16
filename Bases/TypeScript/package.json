@@ -1,0 +1,11 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -p 8436"
+  },
+  "author": "",
+  "license": "ISC"
+}
