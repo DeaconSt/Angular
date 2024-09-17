@@ -1,7 +1,8 @@
 ////////////////////////////////////////Punto #1///////////////////////////////////////
-let numeroUno: number = 15;
-let numeroDos: number = 20;
-let comparation: boolean;
+    //Operador de asignación = 
+    let numeroUno: number = 15;
+    let numeroDos: number = 20;
+    let comparation: boolean;
     //Operadores aritmeticos
         //suma +
         let suma = numeroUno + numeroDos;
@@ -15,13 +16,43 @@ let comparation: boolean;
         let division = numeroDos / numeroUno;
         console.log(division); //20
         //Multiplicación *
-        numeroUno = 4
-        numeroDos = 7
-        let Multiplicacion = numeroUno * numeroDos
-        console.log(Multiplicacion) //28
-
-    
-
+        numeroUno = 4;
+        numeroDos = 7;
+        let Multiplicacion = numeroUno * numeroDos;
+        console.log(Multiplicacion); //28
+        //Exponente **
+        numeroUno = 5;
+        numeroDos = 5;
+        let exponente = numeroUno ** numeroDos;
+        console.log(exponente); //25
+        //Modulo o residuo %
+        numeroUno = 10;
+        numeroDos = 8;
+        let mod = numeroUno % numeroDos;
+        console.log(mod); // 1
+        //Operador de PREincremento
+        numeroUno = ++numeroUno;
+        numeroDos = ++numeroDos;
+        console.log(numeroUno+' Y ' +numeroDos); //11 Y 9
+        //Operado de POSTincremento
+        numeroUno = 18;
+        numeroDos = numeroUno++;
+        console.log(numeroUno+' Y ' +numeroDos); //19 Y 18
+        //Operador de Predecremento
+        numeroUno = --numeroUno;
+        numeroDos = --numeroDos;
+        console.log(numeroUno+' Y ' +numeroDos); //18 y 17
+        //Operador de Postdecremento
+        numeroUno = 55;
+        numeroDos = numeroUno--;
+        console.log(numeroUno +' Y '+ numeroDos); // 54 y 55
+        //Operador unario de suma
+        let primerNumero: string = "1012";
+        let segundoNumero: string = "3923";
+        let unaryPlus = +primerNumero;
+        console.log(unaryPlus) // number =  1012
+        let unaryMinus = -segundoNumero;
+        console.log(unaryMinus) // number = -3923
 
     //Operadores decomparación ==
         //Comparador de igualdad
@@ -52,6 +83,4 @@ let comparation: boolean;
         numeroDos = 10;
         comparation = numeroUno <= numeroDos;
         console.log(comparation); //verdadero
-
-        console.log("prueba git221321543sdwadsdsafa"); //verdadero
         
