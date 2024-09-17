@@ -14,6 +14,11 @@ let comparation: boolean;
         numeroDos = 100;
         let division = numeroDos / numeroUno;
         console.log(division); //20
+        //Multiplicación *
+        numeroUno = 4
+        numeroDos = 7
+        let Multiplicacion = numeroUno * numeroDos
+        console.log(Multiplicacion) //28
 
     
 
