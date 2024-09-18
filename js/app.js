@@ -4,7 +4,16 @@
 let numeroUno = 15;
 let numeroDos = 20;
 let comparation;
+// n = n+b
+numeroUno += numeroDos;
+console.log(numeroUno); //35
+// n = n-b
+numeroDos -= numeroUno; //20 - 35
+console.log(numeroDos); // -15
+// Asi con demas operadores aritmeticos como *, /, %, etc.
 //Operadores aritmeticos
+numeroUno = 15;
+numeroDos = 20;
 //suma +
 let suma = numeroUno + numeroDos;
 console.log(suma); //35
@@ -31,19 +40,19 @@ numeroUno = 10;
 numeroDos = 8;
 let mod = numeroUno % numeroDos;
 console.log(mod); // 1
-//Operador de PREincremento
+//Operador de PREincremento - primero incrementa y luego se usa
 numeroUno = ++numeroUno;
 numeroDos = ++numeroDos;
 console.log(numeroUno + ' Y ' + numeroDos); //11 Y 9
-//Operado de POSTincremento
+//Operado de POSTincremento - Primero se usa y luego incrementa
 numeroUno = 18;
 numeroDos = numeroUno++;
 console.log(numeroUno + ' Y ' + numeroDos); //19 Y 18
-//Operador de Predecremento
+//Operador de Predecremento - primero decrementa y luego se usa
 numeroUno = --numeroUno;
 numeroDos = --numeroDos;
 console.log(numeroUno + ' Y ' + numeroDos); //18 y 17
-//Operador de Postdecremento
+//Operador de Postdecremento - primero se usa y luego decrementa
 numeroUno = 55;
 numeroDos = numeroUno--;
 console.log(numeroUno + ' Y ' + numeroDos); // 54 y 55
@@ -54,8 +63,15 @@ let unaryPlus = +primerNumero;
 console.log(unaryPlus); // number =  1012
 let unaryMinus = -segundoNumero;
 console.log(unaryMinus); // number = -3923
-//Operadores decomparación ==
-//Comparador de igualdad
+//Operadores de comparación
+//Comparador de identidad ===
+numeroUno = 12;
+numeroDos = 12;
+comparation = numeroUno === numeroDos;
+console.log('identity', comparation); // true, porque son identicamente iguales en tipo de dato y valor  (operador de igualdad estricta)
+//Comparador de igualdad ==
+numeroUno = 84;
+numeroDos = 12;
 comparation = numeroUno == numeroDos;
 console.log(comparation); //falso
 //Comparador de desigualdad !=
@@ -63,6 +79,11 @@ numeroUno = 15;
 numeroDos = 55;
 comparation = numeroUno != numeroDos;
 console.log(comparation); //verdadero
+//Comparador de no identidad !==
+numeroUno = 12;
+numeroDos = 12;
+comparation = numeroUno !== numeroDos;
+console.log('No identity', comparation); //false, debido a que los datos son exactamente iguales (operador de desigualdad estricta)
 //Comparador de mayor >
 numeroUno = 35;
 numeroDos = 90;
@@ -83,3 +104,22 @@ numeroUno = -40;
 numeroDos = 10;
 comparation = numeroUno <= numeroDos;
 console.log(comparation); //verdadero
+//Operadores lógicos
+/*  Valores de verdad y falsedad:
+    Falsedad: false, 0, -0, 0n, "", null, undefined, NaN
+    Verdad: todo lo demás, incluido "0", "falso", [], {}, function(){} */
+// and &&
+let andResult1 = true && true; // true
+let andResult2 = true && false; // false
+let andResult3 = false && true; // false
+let andResult4 = false && false; // false
+// uso de corto circuito y valores no booleanos
+let andShortCircuit1 = 0 && 'hello'; // 0 (falsy, short-circuits)
+let andShortCircuit2 = 1 && 'hello'; // "hello"
+let andShortCircuit3 = 'hello' && 0; // 0
+let andShortCircuit4 = null && undefined; // null (falsy, short-circuits)
+// OR ||
+console.log("CAMBIOS SUBIDOS");
+//operadores booleanos
+let verdadero = true;
+let falso = false;
