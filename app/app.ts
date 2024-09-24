@@ -41,7 +41,7 @@ console.log(exponente); //25
 numeroUno = 10;
 numeroDos = 8;
 let mod = numeroUno % numeroDos;
-console.log(mod); // 1
+console.log('Mod',mod); // 2
 //Operador de PREincremento - primero incrementa y luego se usa
 numeroUno = ++numeroUno;
 numeroDos = ++numeroDos;
@@ -226,5 +226,74 @@ while (dayWeek <= 7) {
   console.log("Dia de la semana", dayWeek);
   dayWeek++;
 }
+console.log('Do - While')
+dayWeek = 1; 
+do {
+    console.log("Dia de la semana", dayWeek);
+    dayWeek++;
+} while (dayWeek <= 7);
 
-//quedamos en for in y for of!!! vamos pa adelante que si podemos ser buenos desarroladores, solo no nos rindamos
+//For of -> Para recorrer directamente los valores de un array o string por ejemplo
+let animales = ['perro' , 'vaca' , 'raton']
+for (const element of animales) {
+    console.log(element)
+}
+
+//for - in -> Para recorrer directamente sobre las claves o propiedades de un objeto, tambien indices
+for (const key in animales) {
+    console.log(key) // 0,1,2
+}
+const perro = {
+    nombre:'Firulais',
+    Raza: 'Pitbull',
+    Años: 8
+}
+for (const key in perro) {
+    console.log(key) //nombre, raza, años
+}
+// .map para arreglos y elementos dentro de arreglos para tomar los valores de sus propiedades
+const personas = [
+    { nombre: "Juan", edad: 25 },
+    { nombre: "María", edad: 30 },
+    { nombre: "Pedro", edad: 40 }
+  ];
+  
+  const edades = personas.map((persona) => persona.edad);
+  console.log(edades); // [25, 30, 40]
+
+  //foreach
+  const numeros = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  
+  numeros.forEach(element => {
+    console.log(element)
+  });
+
+  //try catch utilizado para el manejo de errores
+try {
+    let x = 10;
+    let y = 0
+    let div = x/y
+    if (y == 0) {
+        throw new Error('Division por 0!')
+    }
+    console.log(div)
+} catch (error) {
+    console.log('Ha ocurrido un error',error)
+}finally{
+    console.log('La división ha sido ejecutada')
+}
+
+//ejercicio extra
+
+let w: number = 55;
+
+for (let index = 10; index <= w; index++) {
+
+    let isMultipleTothree = index % 3 == 0;
+    let isSixteen = index === 16
+    let pares = index % 2 === 0
+
+    if(!isMultipleTothree && !isSixteen && pares){
+        console.log(index)
+    }
+}
