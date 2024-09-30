@@ -1,299 +1,100 @@
-////////////////////////////////////////Punto #1///////////////////////////////////////
-//Operador de asignación =
-let numeroUno: number = 15;
-let numeroDos: number = 20;
-let comparation: boolean;
-// n = n+b
-numeroUno += numeroDos;
-console.log(numeroUno); //35
-// n = n-b
-numeroDos -= numeroUno; //20 - 35
-console.log(numeroDos); // -15
-// Asi con demas operadores aritmeticos como *, /, %, etc.
-//operadores booleanos
-let verdadero: boolean = true;
-let falso: boolean = false;
-//Operadores aritmeticos
-numeroUno = 15;
-numeroDos = 20;
-//suma +
-let suma = numeroUno + numeroDos;
-console.log(suma); //35
-// resta -
-let resta = numeroDos - numeroUno;
-console.log(resta); //5
-//División /
-numeroUno = 5;
-numeroDos = 100;
-let division = numeroDos / numeroUno;
-console.log(division); //20
-//Multiplicación *
-numeroUno = 4;
-numeroDos = 7;
-let Multiplicacion = numeroUno * numeroDos;
-console.log(Multiplicacion); //28
-//Exponente **
-numeroUno = 5;
-numeroDos = 5;
-let exponente = numeroUno ** numeroDos;
-console.log(exponente); //25
-//Modulo o residuo %
-numeroUno = 10;
-numeroDos = 8;
-let mod = numeroUno % numeroDos;
-console.log('Mod',mod); // 2
-//Operador de PREincremento - primero incrementa y luego se usa
-numeroUno = ++numeroUno;
-numeroDos = ++numeroDos;
-console.log(numeroUno + " Y " + numeroDos); //11 Y 9
-//Operado de POSTincremento - Primero se usa y luego incrementa
-numeroUno = 18;
-numeroDos = numeroUno++;
-console.log(numeroUno + " Y " + numeroDos); //19 Y 18
-//Operador de Predecremento - primero decrementa y luego se usa
-numeroUno = --numeroUno;
-numeroDos = --numeroDos;
-console.log(numeroUno + " Y " + numeroDos); //18 y 17
-//Operador de Postdecremento - primero se usa y luego decrementa
-numeroUno = 55;
-numeroDos = numeroUno--;
-console.log(numeroUno + " Y " + numeroDos); // 54 y 55
-//Operador unario de suma
-let primerNumero: string = "1012";
-let segundoNumero: string = "3923";
-let unaryPlus = +primerNumero;
-console.log(unaryPlus); // number =  1012
-let unaryMinus = -segundoNumero;
-console.log(unaryMinus); // number = -3923
+//Estructuras de datos Simples
+// Arrays - Almacen de datos de un mismo tipo ordenados e identificados por indices
+let numeros: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+numeros.push(11) //se agrega a la ultima posicion de la lista el 11
+debugger
+console.log(JSON.stringify(numeros)); // 1,2,3,4,5,6,7,8,9,10,11
+console.log(numeros[0]); // 1 ya que esta en el indice 0
+numeros[0] = 50; // el primer numero del arreglo ahora será 50
+numeros.unshift(100) //agrega 100 a la primera posición de la lista
+numeros.pop() // elimina el ultimo numero de la lista en este caso el 11
+numeros.reduce
+console.log(numeros); // 100,50,1,2,3,4,5,6,7,8,9,10
 
-//Operadores de comparación
-//Comparador de identidad ===
-numeroUno = 12;
-numeroDos = 12;
-comparation = numeroUno === numeroDos;
-console.log("identity", comparation); // true, porque son identicamente iguales en tipo de dato y valor  (operador de igualdad estricta)
-//Comparador de igualdad ==
-numeroUno = 84;
-numeroDos = 12;
-comparation = numeroUno == numeroDos;
-console.log(comparation); //falso
-//Comparador de desigualdad !=
-numeroUno = 15;
-numeroDos = 55;
-comparation = numeroUno != numeroDos;
-console.log(comparation); //verdadero
-//Comparador de no identidad !==
-numeroUno = 12;
-numeroDos = 13;
-comparation = numeroUno !== numeroDos;
-console.log("No identity", comparation); //false, debido a que los datos son exactamente iguales (operador de desigualdad estricta)
-//Comparador de mayor >
-numeroUno = 35;
-numeroDos = 90;
-comparation = numeroUno > numeroDos;
-console.log(comparation); //falso
-//Comparador de menor <
-numeroUno = 35;
-numeroDos = 90;
-comparation = numeroUno < numeroDos;
-console.log(comparation); //verdadero
-//Comparador de mayor o igual >=
-numeroUno = 520;
-numeroDos = 150;
-comparation = numeroUno >= numeroDos;
-console.log(comparation); //verdadero
-//Comparador de menor o igual <=
-numeroUno = -40;
-numeroDos = 10;
-comparation = numeroUno <= numeroDos;
-console.log(comparation); //verdadero
 
-//Operadores lógicos
-/*  Valores de verdad y falsedad:
-        Falsedad: false, 0, -0, 0n, "", null, undefined, NaN
-        Verdad: todo lo demás, incluido "0", "falso", [], {}, function(){} */
+// numeros.forEach(element => {
+//   console.log('Elemento solo: ', element)
+//   console.log('Elemento + elemento + 1',element + element++ )
+// });
 
-// and &&
-let andResult1: boolean = true && true; // true
-let andResult2: boolean = true && false; // false
-let andResult3: boolean = false && true; // false
-let andResult4: boolean = false && false; // false
+//Tuplas (como arrays) - pueden tener diferentes tipos de datos en cada posición, tienen un numero fijo de datos y son inalterables
+let tupla: [string, number];
+tupla = ["Edad", 30];
+console.log(tupla); // ["edad", 30]
+//tambien se puede acceder a los elementos por el indice como un array
+console.log(tupla[0]); //Edad
+console.log(tupla[1]); //30
 
-// uso de corto circuito y valores no booleanos
-let andShortCircuit1: any = 0 && "hello"; // 0 (falsy, short-circuits)
-let andShortCircuit2: any = 1 && "hello"; // "hello"
-let andShortCircuit3: any = "hello" && 0; // 0
-let andShortCircuit4: any = null && undefined; // null (falsy, short-circuits)
+// Objetos - colección de pares clave-valor. Las claves son únicas, y los valores pueden ser de cualquier tipo.
 
-// OR ||
-let orResult1: boolean = true || true; //truue
-let orResult2: boolean = true || false; //true
-let orResult3: boolean = false || true; //true
-let orResult4: boolean = false || false; //false
+let persona3: { nombre: string; edad: number } = { nombre: "Deacon", edad: 21 };
+console.log(persona3); // Object { nombre: "Deacon", edad: 21 }
+console.log(persona3.nombre); //Deacon
+console.log(persona3.edad); //21
 
-let y: number = 5;
-y <<= 1; // y = y << 1; // Left shifts y by 1 bit and assigns the result to y
-y >>= 1; // y = y >> 1; // Right shifts y by 1 bit and assigns the result to y
-y >>>= 1; // y = y >>> 1; // Unsigned right shifts y by 1 bit and assigns the result to y
+//set - Estructura de datos que almacena solo valores unicos , no permite duplicados
+let conjunto: Set<number> = new Set();
+conjunto.add(1);
+conjunto.add(2);
+conjunto.add(1); //este no lo muestra debido a que ya fue insertado anteriormente
+console.log(conjunto); //Set [ 1, 2 ]
+console.log(conjunto.size); //tamaño del set : 2
 
-let z: number = 7;
-z &= 3; // z = z & 3; // Performs bitwise AND on z and 3, assigns the result to z
-z |= 4; // z = z | 4; // Performs bitwise OR on z and 4, assigns the result to z
-z ^= 2; // z = z ^ 2; // Performs bitwise XOR on z and 2, assigns the result to z
+//Map - Estructura parecida a los objetos pero permite que las claves sean cualquier tipo de dato.
+let Mapa: Map<string, number> = new Map();
+Mapa.set("uno", 1);
+Mapa.set("dos", 2);
+console.log(Mapa); // Map { uno → 1, dos → 2 }
+console.log(Mapa.get("uno")); //1
+console.log(Mapa.get("dos")); //2
+//Mapa con las clave - valor de otro tipo (invertidos)
+let Mapa2: Map<number, string> = new Map();
+Mapa2.set(1, "uno");
+Mapa2.set(2, "dos");
+console.log(Mapa2); //  Map { 1 → "uno", 2 → "dos" }
+console.log(Mapa2.get(1)); // 'uno'
+console.log(Mapa2.get(2)); // 'dos'
 
-let str: string = "Hola ";
-str += "Mundo"; // se pueden concatenar cadenas de texto con +
-console.log(str); //Hola mundo
+//Listas enlazadas
 
-//Operadores de pertenencia para evaluar si un objeto o estrucutura contiene algo
-let person = { name: "Deacon", age: 21 };
-let car = ["toyota", "ford", "Renault"];
+class node<T> {
+  valor: T;
+  siguiete: node<T> | null = null;
 
-console.log("name" in person && "age" in person); //true
-console.log("color" in person); // false
-console.log(0 in car); // true porque exise el indice 0
-console.log(3 in car); // false porque no existe el indice 3
-
-// Instancia de objetos
-
-class animal {}
-class cat extends animal {}
-let DeaconCats = new cat();
-console.log(DeaconCats instanceof cat); // true - instanceof para verificar si un objeto es instanciado de una determinada clase
-console.log(DeaconCats instanceof animal); // true
-console.log(DeaconCats instanceof Object); // true
-
-//Funcion .includes() para arrays
-
-let frutas = ["pera", "manzana", "mandarina"];
-
-console.log("frutas: ", frutas.includes("pera")); // true
-console.log(frutas.includes("banano")); //false
-
-//Funcion .includes para strings
-let message = "Hola mundo verdadero";
-console.log(message.includes("Hola")); //true
-console.log(message.includes("falso")); //false
-console.log(message.includes("x")); //false
-console.log(message.includes("e")); //true
-
-//funcion .hasownproperty (para saber si un objeto tiene una propiedad propia asignada (no cuentan propiedades heredadas))
-let libro = { title: "habitos atomicos", author: "tupu" };
-
-console.log(libro.hasOwnProperty("title")); //true
-console.log(libro.hasOwnProperty("pages")); //false
-
-//estructuras de control en typescript
-let x = 10; //en funcion de este valor, se enviara cierto mensaje
-//Solo if
-if (x > 1) {
-  console.log(x + " es mayor que 1");
+  constructor(valor: T) {
+    this.valor = valor;
+  }
 }
-//if - else
-if (x > 5) {
-  console.log(x + " es mayor que 5");
-} else {
-  console.log(x + " es menor o igual a 5");
-}
-//if - else if
-if (x > 5) {
-  console.log(x + " es mayor que 5");
-} else if (x < 5) {
-  console.log(x + " es menor que 5");
-} else {
-  console.log(x + " es igual que 5");
-}
-//switch control
-let dayWeek: number = 6;
-switch (dayWeek) {
-  case 6:
-    console.log("Dia sabado");
-    break; //es para que al ejecutar las lineas de codigo anteriores, se cierre el switch, si no se pone se ejecutara el default tambien
-  case 7:
-    console.log("Domingo");
-    break;
-  default:
-    console.log("Ni idea de que dia es :c");
-    break;
-}
-//Ciclos e iteraciones
-for (let index = 1; index <= 10; index++) {
-  //primero 10 numeros
-  console.log("numero: ", index);
-}
-dayWeek = 1;
-while (dayWeek <= 7) {
-  console.log("Dia de la semana", dayWeek);
-  dayWeek++;
-}
-console.log('Do - While')
-dayWeek = 1; 
-do {
-    console.log("Dia de la semana", dayWeek);
-    dayWeek++;
-} while (dayWeek <= 7);
+class listaEnlazada<T> {
+  cabeza: node<T> | null = null;
 
-//For of -> Para recorrer directamente los valores de un array o string por ejemplo
-let animales = ['perro' , 'vaca' , 'raton']
-for (const element of animales) {
-    console.log(element)
-}
-
-//for - in -> Para recorrer directamente sobre las claves o propiedades de un objeto, tambien indices
-for (const key in animales) {
-    console.log(key) // 0,1,2
-}
-const perro = {
-    nombre:'Firulais',
-    Raza: 'Pitbull',
-    Años: 8
-}
-for (const key in perro) {
-    console.log(key) //nombre, raza, años
-}
-// .map para arreglos y elementos dentro de arreglos para tomar los valores de sus propiedades
-const personas = [
-    { nombre: "Juan", edad: 25 },
-    { nombre: "María", edad: 30 },
-    { nombre: "Pedro", edad: 40 }
-  ];
-  
-  const edades = personas.map((persona) => persona.edad);
-  console.log(edades); // [25, 30, 40]
-
-  //foreach
-  const numeros = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  
-  numeros.forEach(element => {
-    console.log(element)
-  });
-
-  //try catch utilizado para el manejo de errores
-try {
-    let x = 10;
-    let y = 0
-    let div = x/y
-    if (y == 0) {
-        throw new Error('Division por 0!')
+  agregar(valor: T) {
+    let nuevoNodo = new node(valor);
+    if (this.cabeza == null) {
+      this.cabeza = nuevoNodo;
+    } else {
+      let actual = this.cabeza;
+      while (actual.siguiete != null) {
+        actual = actual.siguiete;
+      }
+      actual.siguiete = nuevoNodo;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
     }
-    console.log(div)
-} catch (error) {
-    console.log('Ha ocurrido un error',error)
-}finally{
-    console.log('La división ha sido ejecutada')
-}
-
-//ejercicio extra
-
-let w: number = 55;
-
-for (let index = 10; index <= w; index++) {
-
-    let isMultipleTothree = index % 3 == 0;
-    let isSixteen = index === 16
-    let pares = index % 2 === 0
-
-    if(!isMultipleTothree && !isSixteen && pares){
-        console.log(index)
+  }
+  imprimir(){
+    let actual = this.cabeza
+    while(actual != null){
+      console.log(actual.valor)
+      actual = actual.siguiete
     }
+  }
 }
+
+let listaEnlazada1 = new listaEnlazada();
+
+listaEnlazada1.agregar(10);
+listaEnlazada1.agregar(20);
+listaEnlazada1.agregar(30);
+listaEnlazada1.agregar(40);
+listaEnlazada1.agregar(50);
+listaEnlazada1.imprimir(); // 10, 20, 30, 40, 50
+
