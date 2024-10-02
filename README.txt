@@ -6,3 +6,5 @@ Para correr el compilador de ts y hacer pruebas se necesitan dos cosas:
 para correr cosas en consola:
 1. tsc app.ts en la ruta exacta
 2. node app.js en la ruta exacta
+
+npm i --save-dev @types/node 
