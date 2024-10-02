@@ -8,3 +8,4 @@ para correr cosas en consola:
 2. node app.js en la ruta exacta
 
 npm i --save-dev @types/node 
+npm install prompt-sync  
