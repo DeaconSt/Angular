@@ -7,5 +7,11 @@
     "start": "http-server -p 8436"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4"
+  }
 }
