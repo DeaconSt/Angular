@@ -1,231 +1,118 @@
 "use strict";
-// //Estructuras de datos Simples
-// // Arrays - Almacen de datos de un mismo tipo ordenados e identificados por indices
-// let numeros: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// numeros.push(11); //se agrega a la ultima posicion de la lista el 11
-// console.log(JSON.stringify(numeros)); // 1,2,3,4,5,6,7,8,9,10,11
-// console.log(numeros[0]); // 1 ya que esta en el indice 0
-// numeros[0] = 50; // el primer numero del arreglo ahora será 50
-// numeros.unshift(100); //agrega 100 a la primera posición de la lista
-// console.log(JSON.stringify(numeros)); // 100,50,2,3,4,5,6,7,8,9,10, 11
-// numeros.pop(); // elimina el ultimo numero de la lista en este caso el 11
-// numeros.shift(); // Elimina el primer elemento de la lista
-// console.log(numeros); // 50,2,3,4,5,6,7,8,9,10
-// // metodo filter: crea un nuevo array con todos los elementos que pasan una condición específica, basada en una función que defines
-// let numerosFilters = numeros.filter((numero) => numero >= 1 && numero <= 10); //la funcion almacena en el nuevo array los elementos que cumplen con la condición interna
-// console.log(numerosFilters); //2,3,4,5,6,7,8,9,10
-// // filter con indice
-// let numeros2: number[] = [10, 20, 30, 40, 50];
-// let resultado = numeros2.filter((num, index) => index % 2 === 0);
-// console.log(resultado); // [10, 30, 50]  (Solo los elementos en índices pares)
-// // Método splice: elimina un elemento del arreglo ORIGINAL usando su indice como parametro
-// let indice = numeros2.indexOf(30); //indexOf sirve para encontrar el indice del primer elemento con valor 30 (en este caso seria el 2), pero si no lo encuentra, devuelve -1
-// if (indice > -1) {
-//   numeros2.splice(indice, 1); //para eliminar solo un elemento, el primer parametro es el indice desde donde quiero eliminar y el segundo es la cantidad de elementos a eliminar
-// }
-// console.log(numeros2); //10, 20, 40, 50
-// //eliminar multiples elementos con splice
-// let numeros3: number[] = [1, 2, 3, 4, 5, 6, 7];
-// numeros3.splice(2, 3); // Elimina 3 elementos a partir del índice 2
-// console.log(numeros3); // [1, 2, 6, 7]
-// //Método slice: sirve para crear un subarreglo apartir de los elementos de otro arreglo
-// let numeros4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-// let subarray = numeros4.slice(2, 4); //del indice 2 al indice 4 (excluyendo este)
-// console.log(subarray); //3,4
-// //Caso sin el fin (el cual es opcional)
-// let subarray2 = numeros4.slice(2); //del indice 2 hasta el final del arreglo
-// console.log(subarray2); //3, 4, 5, 6, 7, 8, 9, 10
-// //caso con parametros negativos
-// let subarray3 = numeros.slice(-5, -1); // como -1 es el ultimo indice del arreglo SIEMPRE, se descuentan indices hasta -5 (10, 9, 8, 7, 6) en este caso 6 estaria en el indice -5
-// console.log(subarray3); // 6,7,8,9
-// //Tuplas (como arrays) - pueden tener diferentes tipos de datos en cada posición, tienen un numero fijo de datos y son inalterables
-// let tupla: [string, number];
-// tupla = ["Edad", 30];
-// console.log(tupla); // ["edad", 30]
-// //tambien se puede acceder a los elementos por el indice como un array
-// console.log(tupla[0]); //Edad
-// console.log(tupla[1]); //30
-// //set - Estructura de datos que almacena solo valores unicos , no permite duplicados
-// let conjunto: Set<any> = new Set(); //se debe establecer el tipo de datos que va a contener el set.
-// conjunto.add(1);
-// conjunto.add(2);
-// conjunto.add(1); //este no lo muestra debido a que ya fue insertado anteriormente
-// conjunto.add("25");
-// console.log(conjunto); //Set [ 1, 2, '25' ]
-// console.log(conjunto.size); //tamaño del set : 2
-// conjunto.delete(2); //elimina el elemento de valor 2
-// console.log("Conjunto: ", conjunto); //Set [ 1,'25' ]
-// //Map - Estructura parecida a los objetos pero permite que las claves sean cualquier tipo de dato.
-// let Mapa: Map<string, number> = new Map();
-// Mapa.set("uno", 1);
-// Mapa.set("dos", 2); //set sirve tanto para insertar elementos como para actualizarlos
-// console.log(Mapa); // Map { uno → 1, dos → 2 }
-// Mapa.set("dos", 550);
-// console.log("Mapa", Mapa); //Map { uno → 1, dos → 550 }
-// Mapa.delete("dos"); //se elimina la clave "dos" y su valor
-// console.log(Mapa);
-// console.log(Mapa.get("uno")); //1
-// console.log(Mapa.get("dos")); //2
-// //Mapa con las clave - valor de otro tipo (invertidos)
-// let Mapa2: Map<number, string> = new Map();
-// Mapa2.set(1, "uno");
-// Mapa2.set(2, "dos");
-// console.log(Mapa2); //  Map { 1 → "uno", 2 → "dos" }
-// console.log(Mapa2.get(1)); // 'uno'
-// console.log(Mapa2.get(2)); // 'dos'
-// // Objetos - colección de pares clave-valor. Las claves son únicas, y los valores pueden ser de cualquier tipo.
-// let persona3: { nombre: string; edad?: number } = {
-//   nombre: "Deacon",
-//   edad: 21,
-// }; //el ? es para indicar que la propiedad de este objeto es opcional, se debe usar si se quiere eliminar una propiedad
-// console.log(persona3); // Object { nombre: "Deacon", edad: 21 }
-// console.log(persona3.nombre); //Deacon
-// console.log(persona3.edad); //21
-// //Se actualizan los valores en las propiedades
-// persona3.nombre = "Jhon";
-// persona3.edad = 22;
-// console.log(persona3); // Object { nombre: "Jhon", edad: 22 }
-// delete persona3.edad; //se elimina la propiedad edad del objeto que esta marcada como opcional ?
-// //Listas enlazadas
-// class node<T> {
-//   valor: T;
-//   siguiete: node<T> | null = null;
-//   constructor(valor: T) {
-//     this.valor = valor;
-//   }
-// }
-// class listaEnlazada<T> {
-//   cabeza: node<T> | null = null;
-//   agregar(valor: T) {
-//     let nuevoNodo = new node(valor);
-//     if (this.cabeza == null) {
-//       this.cabeza = nuevoNodo;
-//     } else {
-//       let actual = this.cabeza;
-//       while (actual.siguiete != null) {
-//         actual = actual.siguiete;
-//       }
-//       actual.siguiete = nuevoNodo;
-//     }
-//   }
-//   imprimir() {
-//     let actual = this.cabeza;
-//     while (actual != null) {
-//       console.log(actual.valor);
-//       actual = actual.siguiete;
-//     }
-//   }
-// }
-// let listaEnlazada1 = new listaEnlazada();
-// listaEnlazada1.agregar(10);
-// listaEnlazada1.agregar(20);
-// listaEnlazada1.agregar(30);
-// listaEnlazada1.agregar(40);
-// listaEnlazada1.agregar(50);
-// listaEnlazada1.imprimir(); // 10, 20, 30, 40, 50
+//Cadenas de caracteres
 /*
-DIFICULTAD EXTRA (opcional):
- * Crea una agenda de contactos por terminal.
- * - Debes implementar funcionalidades de búsqueda, inserción, actualización y eliminación de contactos.
- * - Cada contacto debe tener un nombre y un número de teléfono.
- * - El programa solicita en primer lugar cuál es la operación que se quiere realizar, y a continuación
- *   los datos necesarios para llevarla a cabo.
- * - El programa no puede dejar introducir números de teléfono no númericos y con más de 11 dígitos.
- *   (o el número de dígitos que quieras)
- * - También se debe proponer una operación de finalización del programa.
+ * EJERCICIO:
+ * Muestra ejemplos de todas las operaciones que puedes realizar con cadenas de caracteres
+ * en tu lenguaje. Algunas de esas operaciones podrían ser (busca todas las que puedas):
+ * - Acceso a caracteres específicos, subcadenas, longitud, concatenación, repetición, recorrido,
+ *   conversión a mayúsculas y minúsculas, reemplazo, división, unión, interpolación, verificación...
+ *
+ * DIFICULTAD EXTRA (opcional):
+ * Crea un programa que analice dos palabras diferentes y realice comprobaciones
+ * para descubrir si son:
+ * - Palíndromos
+ * - Anagramas
+ * - Isogramas
+ */
+//Concatenar : unir las cadenas
+let saludo = "Hola ";
+let res = saludo + "mundo";
+console.log(res); //Hola mundo
+//Acceso a caracteres : devuelve el caracter que este en ese indice especifico
+console.log(saludo[0]); //H
+//longitud de la cadena : el numero total de caracteres
+console.log(res.length); //10
+//CharAt(indice): Devuelve el caracter de un indice especifico (no recibe indices negativos)
+let ts = "TypeScript";
+console.log(ts.charAt(ts.length - 1)); // t
+//indexOf(subcadena) : devuelve el indice o posición de la primera aparición de una cadena
+console.log(ts.indexOf("Type")); // 0
+console.log(ts.indexOf("Script")); // 4
+//LastIndexOf(subcadena): devuelve el indice o posición de la ultima aparición de una cadena
+console.log(ts.lastIndexOf("t")); // 9
+console.log(ts.lastIndexOf("p")); // 8
+//ToUpperCase: devuelve la cadena de caracteres en mayuscula
+console.log("Mayus: ", ts.toUpperCase()); //Mayus:  TYPESCRIPT
+//ToLoweerCase: devuelve la cadena de caracteres en minuscula
+console.log("Minus: ", ts.toLowerCase()); //Minus:  typescript
+//Trim: Elimina los espacios en blanco al inicio y final del string
+let meg = "  pruebaTrim     ";
+console.log(meg.trim()); //pruebaTrim
+//Slice(inicio,fin): Extrae una parte de la cadena y devuelve una nueva cadena, sin modificar la original.
+//res = hola mundo
+console.log(res.slice(0, 4)); // Hola: 0 es el indice desde donde quiero que se extraiga la subcadena y 4 es hasta donde, inicio - fin
+//Substring(inicio, fin): Similar a slice pero no permite valores negativos
+console.log(res.substring(5)); // Mundo: Si solo pongo el indice de inicio, la subcadena va hasta el final de la cadena original
+res = "Hola mundo, Hola universo, Hola tierra";
+//Replace(buscar, reemplazo): reemplaza una cadena por otra, si se quiere reemplazar todas las coincidencias, se usa una expresión regular con el modificador g.
+console.log(res.replace("mundo", "universo")); //Hola universo
+console.log(res.replace(/Hola/gi, "Hey")); //Hey mundo, Hey universo, Hey tierra
+//Split(delimitador): divine una cadena en un arreglo en base a su delimitador
+let partes = res.split(",");
+console.log(partes); //[ 'Hola mundo', ' Hola universo', ' Hola tierra' ]
+//Includes(subcadena): sirve para verificar si una cadena contiene una subcadena, devuelve true o false
+console.log(partes[0].includes("Hola mundo")); //True
+console.log(partes[2].includes("Hola omniverso")); //False
+//starWith(subcadena): Sirve para determinar si una cadena comienza con una subcadena
+//ts: 'Typescript
+console.log(ts.startsWith("T")); //True
+//endWith(subcadena): Sirve para determinar si una cadena termina con una subcadena
+console.log(ts.endsWith("t")); //True
+//Repeat (veces): Repite el string las veces
+console.log(ts.repeat(5)); //TypeScriptTypeScriptTypeScriptTypeScriptTypeScript
+/*
+ * DIFICULTAD EXTRA (opcional):
+ * Crea un programa que analice dos palabras diferentes y realice comprobaciones
+ * para descubrir si son:
+ * - Palíndromos:  palabra o frase que se lee igual en un sentido que en otro
+ * - Anagramas:  palabra que resulta de la transposición de todas las letras de otra palabra.
+ * - Isogramas: palabra o frase en la que cada letra aparece el mismo número de veces
  */
 const promp1 = require("prompt-sync")({ sigint: true });
-let agenda = [];
-function menu() {
-    console.log("!Bienvenido a tú agenda de contacos!");
-    console.log("1. Buscar contacto");
-    console.log("2. Agregar contacto");
-    console.log("3. Actualizar contacto");
-    console.log("4. Eliminar contacto");
-    console.log("5. Cerrar agenda");
-}
-function buscarContacto(telefono) {
-    let ContactoEncontrado = agenda.find((persona) => persona.telefono == telefono); //find se usa para encontrar el primer elemento de un arreglo que coincida con la condicion
-    if (ContactoEncontrado) {
-        console.log("El contacto es: " + ContactoEncontrado.nombre + ' - ' + ContactoEncontrado.telefono);
+function stringsPractique() {
+    let palabra1 = promp1("Ingrese la primera palabra: ").toLowerCase();
+    let palabra2 = promp1("Ingrese la segunda palabra: ").toLowerCase();
+    //PALINDROMOS
+    function palindromo(palabra1, palabra2) {
+        let palindromo1 = palabra1.split("").reverse().join("");
+        console.log(`La palabra ${palabra1} es: ${palabra1 === palindromo1 ? "palindromo" : " no palindromo"}`);
+        let palindromo2 = palabra2.split("").reverse().join("");
+        console.log(`La palabra ${palabra2} es: ${palabra2 === palindromo2 ? "palindromo" : " no palindromo"}`);
     }
-    else {
-        console.log("Contacto no encontrado");
+    palindromo(palabra1, palabra2);
+    // Anagrama
+    function anagrama(palabra1, palabra2) {
+        let anagrama1 = palabra1.split("").sort().join("").trim(); //primero se separa en un arreglo y luego se ordenan las letras y se quitan los espacios para poder comparar mas de una palabra
+        let anagrama2 = palabra2.split("").sort().join("").trim();
+        console.log(`Las palabras ${palabra1} y ${palabra2} ${anagrama1 == anagrama2 ? "son alagramas" : "no son alagramas"}`);
     }
-}
-function agregarContacto() {
-    let telefono = promp1("Ingrese el número de teléfono: ");
-    let nombre = promp1("Ingrese el nombre de la persona: ");
-    let nuevoContacto = { nombre, telefono };
-    let telefonoRepetido = agenda.find(persona => persona.telefono === telefono);
-    // Validación del número de teléfono
-    while (!/^\d{11}$/.test(telefono)) {
-        console.log("El número de teléfono debe tener 11 dígitos.");
-        telefono = promp1("Ingrese el número de teléfono:");
-    }
-    if (nombre && telefono) {
-        if (telefonoRepetido) {
-            console.log('Télefono ya registrado');
+    anagrama(palabra1, palabra2);
+    //Isograma
+    function isograma(palabra1, palabra2) {
+        let Set1 = new Set(palabra1);
+        let Set2 = new Set(palabra2);
+        let count = 0;
+        console.log(`La palabra ${palabra1}: ${palabra1.length == Set1.size ? "es heterograma" : "no es heterograma"}`);
+        console.log(`La palabra ${palabra2}: ${palabra2.length == Set2.size ? "es heterograma" : "no es heterograma"}`);
+        function validarGradoIsograma(palabra) {
+            let contadorL = {};
+            for (const letra of palabra) {
+                contadorL[letra] = (contadorL[letra] || 0) + 1;
+            }
+            let isograma = true;
+            let valores = Object.values(contadorL); //object values para obtener los valores del objeto , si requiero las claves seria object keys
+            let gradoIsograma = valores[0];
+            for (const palabra of valores) {
+                if (palabra != gradoIsograma) {
+                    isograma = false;
+                    break;
+                }
+            }
+            console.log(`La palabra ${palabra} ${isograma ? 'es un isograma' : 'no es un isograma'}`);
         }
-        else {
-            agenda.push(nuevoContacto);
-            console.log('Contacto ' + nuevoContacto.nombre + ' - ' + nuevoContacto.telefono + ' agregado con exito!');
-        }
+        validarGradoIsograma(palabra1);
+        validarGradoIsograma(palabra2);
     }
-    else {
-        console.log('Por favor verifique los datos insertados e intente nuevamente');
-    }
+    isograma(palabra1, palabra2);
 }
-function actualizarContacto() {
-    let telefono = promp1('Ingrese el número de teléfono del contacto a actualizar: ');
-    let contactoActualizar = agenda.find(persona => persona.telefono === telefono);
-    if (contactoActualizar) {
-        let telefono = promp1('Ingrese el nuevo número de telefono:');
-        let nombre = promp1('Ingrese el nuevo nombre de la persona:');
-        contactoActualizar.nombre = nombre;
-        contactoActualizar.telefono = telefono;
-        console.log('Contacto actualizado con éxito: ', contactoActualizar.nombre);
-    }
-    else {
-        console.log('Contacto no encontrado, compruebe la información suministrada');
-    }
-}
-function eliminarContacto() {
-    let telefono = promp1('Ingrese el número de teléfono del contacto a eliminar: ');
-    let contactoEliminar = agenda.find(persona => persona.telefono === telefono);
-    let indice = agenda.findIndex(persona => persona.telefono === telefono);
-    if (contactoEliminar) {
-        agenda.splice(indice, 1);
-        console.log('Contacto ' + contactoEliminar.nombre + ' - ' + contactoEliminar.telefono + ' eliminado con éxito');
-    }
-    else {
-        console.log('Contacto no encontrado, compruebe la información suministrada');
-    }
-}
-function main() {
-    let opcion;
-    do {
-        menu();
-        opcion = promp1('Ingrese la opción deseada: ');
-        switch (opcion) {
-            case "1":
-                let telefonoContacto = promp1('Ingrese el teléfono del contacto a buscar: ');
-                buscarContacto(telefonoContacto);
-                break;
-            case "2":
-                agregarContacto();
-                break;
-            case "3":
-                actualizarContacto();
-                break;
-            case "4":
-                eliminarContacto();
-                break;
-            default:
-                console.log('Opción invalida');
-                break;
-        }
-    } while (opcion != "5");
-}
-main();
-//mañana se continua, toy cansadito :c
+stringsPractique();
