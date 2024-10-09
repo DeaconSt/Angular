@@ -225,6 +225,7 @@ function eliminarContacto(){
 
 function main(){
   let opcion: string
+  let eject: boolean = true
 
   do {
       menu()
@@ -244,11 +245,15 @@ function main(){
         case "4":
           eliminarContacto()
           break; 
+        case "5":
+          console.log('Adiós')
+          eject = false
+          break;
         default:
           console.log('Opción invalida')
           break;
       }
-  } while (opcion != "5");
+  } while (eject);
 }
 
 main()

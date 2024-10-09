@@ -262,9 +262,9 @@ const personas = [
   console.log(edades); // [25, 30, 40]
 
   //foreach
-  const numeros = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  const numeros5 = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   
-  numeros.forEach(element => {
+  numeros5.forEach(element => {
     console.log(element)
   });
 
