@@ -1,118 +1,129 @@
 "use strict";
-//Cadenas de caracteres
-/*
+/* VALOR Y REFERENCIA
  * EJERCICIO:
- * Muestra ejemplos de todas las operaciones que puedes realizar con cadenas de caracteres
- * en tu lenguaje. Algunas de esas operaciones podrían ser (busca todas las que puedas):
- * - Acceso a caracteres específicos, subcadenas, longitud, concatenación, repetición, recorrido,
- *   conversión a mayúsculas y minúsculas, reemplazo, división, unión, interpolación, verificación...
+ * - Muestra ejemplos de asignación de variables "por valor" y "por referencia", según
+ *   su tipo de dato.
+ * - Muestra ejemplos de funciones con variables que se les pasan "por valor" y
+ *   "por referencia", y cómo se comportan en cada caso en el momento de ser modificadas.
+ * (Entender estos conceptos es algo esencial en la gran mayoría de lenguajes)
  *
  * DIFICULTAD EXTRA (opcional):
- * Crea un programa que analice dos palabras diferentes y realice comprobaciones
- * para descubrir si son:
- * - Palíndromos
- * - Anagramas
- * - Isogramas
+ * Crea dos programas que reciban dos parámetros (cada uno) definidos como variables anteriormente.
+ * - Cada programa recibe, en un caso, dos parámetros por valor, y en otro caso, por referencia.
+ *   Estos parámetros los intercambia entre ellos en su interior, los retorna, y su retorno
+ *   se asigna a dos variables diferentes a las originales. A continuación, imprime el valor de las
+ *   variables originales y las nuevas, comprobando que se ha invertido su valor en las segundas.
+ *   Comprueba también que se ha conservado el valor original en las primeras.
  */
-//Concatenar : unir las cadenas
-let saludo = "Hola ";
-let res = saludo + "mundo";
-console.log(res); //Hola mundo
-//Acceso a caracteres : devuelve el caracter que este en ese indice especifico
-console.log(saludo[0]); //H
-//longitud de la cadena : el numero total de caracteres
-console.log(res.length); //10
-//CharAt(indice): Devuelve el caracter de un indice especifico (no recibe indices negativos)
-let ts = "TypeScript";
-console.log(ts.charAt(ts.length - 1)); // t
-//indexOf(subcadena) : devuelve el indice o posición de la primera aparición de una cadena
-console.log(ts.indexOf("Type")); // 0
-console.log(ts.indexOf("Script")); // 4
-//LastIndexOf(subcadena): devuelve el indice o posición de la ultima aparición de una cadena
-console.log(ts.lastIndexOf("t")); // 9
-console.log(ts.lastIndexOf("p")); // 8
-//ToUpperCase: devuelve la cadena de caracteres en mayuscula
-console.log("Mayus: ", ts.toUpperCase()); //Mayus:  TYPESCRIPT
-//ToLoweerCase: devuelve la cadena de caracteres en minuscula
-console.log("Minus: ", ts.toLowerCase()); //Minus:  typescript
-//Trim: Elimina los espacios en blanco al inicio y final del string
-let meg = "  pruebaTrim     ";
-console.log(meg.trim()); //pruebaTrim
-//Slice(inicio,fin): Extrae una parte de la cadena y devuelve una nueva cadena, sin modificar la original.
-//res = hola mundo
-console.log(res.slice(0, 4)); // Hola: 0 es el indice desde donde quiero que se extraiga la subcadena y 4 es hasta donde, inicio - fin
-//Substring(inicio, fin): Similar a slice pero no permite valores negativos
-console.log(res.substring(5)); // Mundo: Si solo pongo el indice de inicio, la subcadena va hasta el final de la cadena original
-res = "Hola mundo, Hola universo, Hola tierra";
-//Replace(buscar, reemplazo): reemplaza una cadena por otra, si se quiere reemplazar todas las coincidencias, se usa una expresión regular con el modificador g.
-console.log(res.replace("mundo", "universo")); //Hola universo
-console.log(res.replace(/Hola/gi, "Hey")); //Hey mundo, Hey universo, Hey tierra
-//Split(delimitador): divine una cadena en un arreglo en base a su delimitador
-let partes = res.split(",");
-console.log(partes); //[ 'Hola mundo', ' Hola universo', ' Hola tierra' ]
-//Includes(subcadena): sirve para verificar si una cadena contiene una subcadena, devuelve true o false
-console.log(partes[0].includes("Hola mundo")); //True
-console.log(partes[2].includes("Hola omniverso")); //False
-//starWith(subcadena): Sirve para determinar si una cadena comienza con una subcadena
-//ts: 'Typescript
-console.log(ts.startsWith("T")); //True
-//endWith(subcadena): Sirve para determinar si una cadena termina con una subcadena
-console.log(ts.endsWith("t")); //True
-//Repeat (veces): Repite el string las veces
-console.log(ts.repeat(5)); //TypeScriptTypeScriptTypeScriptTypeScriptTypeScript
-/*
- * DIFICULTAD EXTRA (opcional):
- * Crea un programa que analice dos palabras diferentes y realice comprobaciones
- * para descubrir si son:
- * - Palíndromos:  palabra o frase que se lee igual en un sentido que en otro
- * - Anagramas:  palabra que resulta de la transposición de todas las letras de otra palabra.
- * - Isogramas: palabra o frase en la que cada letra aparece el mismo número de veces
- */
-const promp1 = require("prompt-sync")({ sigint: true });
-function stringsPractique() {
-    let palabra1 = promp1("Ingrese la primera palabra: ").toLowerCase();
-    let palabra2 = promp1("Ingrese la segunda palabra: ").toLowerCase();
-    //PALINDROMOS
-    function palindromo(palabra1, palabra2) {
-        let palindromo1 = palabra1.split("").reverse().join("");
-        console.log(`La palabra ${palabra1} es: ${palabra1 === palindromo1 ? "palindromo" : " no palindromo"}`);
-        let palindromo2 = palabra2.split("").reverse().join("");
-        console.log(`La palabra ${palabra2} es: ${palabra2 === palindromo2 ? "palindromo" : " no palindromo"}`);
-    }
-    palindromo(palabra1, palabra2);
-    // Anagrama
-    function anagrama(palabra1, palabra2) {
-        let anagrama1 = palabra1.split("").sort().join("").trim(); //primero se separa en un arreglo y luego se ordenan las letras y se quitan los espacios para poder comparar mas de una palabra
-        let anagrama2 = palabra2.split("").sort().join("").trim();
-        console.log(`Las palabras ${palabra1} y ${palabra2} ${anagrama1 == anagrama2 ? "son alagramas" : "no son alagramas"}`);
-    }
-    anagrama(palabra1, palabra2);
-    //Isograma
-    function isograma(palabra1, palabra2) {
-        let Set1 = new Set(palabra1);
-        let Set2 = new Set(palabra2);
-        let count = 0;
-        console.log(`La palabra ${palabra1}: ${palabra1.length == Set1.size ? "es heterograma" : "no es heterograma"}`);
-        console.log(`La palabra ${palabra2}: ${palabra2.length == Set2.size ? "es heterograma" : "no es heterograma"}`);
-        function validarGradoIsograma(palabra) {
-            let contadorL = {};
-            for (const letra of palabra) {
-                contadorL[letra] = (contadorL[letra] || 0) + 1;
-            }
-            let isograma = true;
-            let valores = Object.values(contadorL); //object values para obtener los valores del objeto , si requiero las claves seria object keys
-            let gradoIsograma = valores[0];
-            for (const palabra of valores) {
-                if (palabra != gradoIsograma) {
-                    isograma = false;
-                    break;
-                }
-            }
-            console.log(`La palabra ${palabra} ${isograma ? 'es un isograma' : 'no es un isograma'}`);
-        }
-        validarGradoIsograma(palabra1);
-        validarGradoIsograma(palabra2);
-    }
-    isograma(palabra1, palabra2);
+/* Por valor: se trabaja una copia del valor original, cualquier cambio en la variable no afecta el valor original,
+ los tipos primitivos (como number, boolean, string, null, undefined, symbol, y bigint) se manejan por valor.
+*/
+let a = 10;
+let b = a; //aqui se copia el valor de a en b
+b = 20; //aqui se cambia directamente el valor de b, no afecta el valor de a
+console.log(a); //10
+console.log(b); //20
+/* Por referencia: Los objetos y arreglos en ts se manjan por referencia,
+Esto significa que cuando asignas una variable a otra o la pasas a una función,
+ambas variables apuntan al mismo espacio de memoria. Cualquier cambio realizado a través de una variable afecta también a la otra.
+*/
+//Ejemplo con objetos
+let obj1 = { nombre: 'Daniel' };
+let obj2 = obj1; // obj2 esta haciendo referencia al mismo objeto que obj1
+//si se hace un cambio a una propiedad del primer objeto, desde el segundo objeto, al estar apuntando al mismo espacio en memoria, ambos camiaran
+obj2.nombre = 'Deacon st jhon';
+console.log(obj1); //{ nombre: 'Deacon st jhon' }
+console.log(obj2); //{ nombre: 'Deacon st jhon' }
+obj1.nombre = 'jon';
+//y en vicebersa
+console.log(obj1); //{ nombre: 'jon' }
+console.log(obj2); //{ nombre: 'jon' }
+//Ejemplo con arrays
+let array1 = [1, 2, 3, 4, 5];
+let array2 = array1;
+array2.push(8);
+console.log(array1); //[ 1, 2, 3, 4, 5, 8 ]
+console.log(array2); //[ 1, 2, 3, 4, 5, 8 ]
+//y en vicebersa
+array1.pop();
+console.log(array1); //[ 1, 2, 3, 4, 5 ]
+console.log(array2); //[ 1, 2, 3, 4, 5 ]
+/* para evitar que un objeto o array al ser modificado, modifique el objeto del que se hace referencia,
+se puede clonar su valor en vez de apuntar al mismo espacio en memoria */
+//con arrays es con el operador de progragación -> [...]  el cual copia los VALORES
+let arreglo1 = [1, 2, 3, 4, 5];
+let arreglo2 = [...arreglo1]; //se copian los valores dentro de arreglo 1
+arreglo2.push(50); //el arreglo 1 ya no se ve modificado
+console.log(arreglo1); //[ 1, 2, 3, 4, 5 ]
+console.log(arreglo2); //[ 1, 2, 3, 4, 5, 50 ]
+//con objetos es con el operador de progragació -> {...} el cual copia las PROPIEDADES
+let objeto1 = { name: 'Juan' };
+let objeto2 = Object.assign({}, objeto1);
+objeto2.name = 'Felipe';
+console.log(objeto1); //{ name: 'Juan' }
+console.log(objeto2); //{ name: 'Felipe' }
+//funciones con datos por valor
+let miInt = 50;
+function valor1(ent) {
+    ent = 25;
+    console.log(ent);
 }
-stringsPractique();
+valor1(miInt); // 25
+console.log(miInt); //sigue siendo 50
+function valor2(ent) {
+    ent = 100;
+    miInt = ent;
+    console.log(miInt); //100
+}
+valor2(miInt);
+console.log(miInt); //Aqui ya vale 100
+//funciones con datos por referencia
+let listParam = [1, 2, 3, 4, 5];
+let number = 435;
+function referencia1(lista, number) {
+    lista.push(number);
+    console.log(lista); //[ 1, 2, 3, 4, 5, 435 ]
+}
+referencia1(listParam, number);
+console.log(listParam); //[ 1, 2, 3, 4, 5, 435 ], el objeto se modificó dentro de la funcion porque dentro de esta se apunta a su mismo espacio en memoria al pasarlo como parametro
+////funciones con datos por referencia clonados
+listParam = [1, 2, 3, 4, 5];
+function referencia2(lista, number) {
+    let listaClon = [...lista]; //solo se clonan los valores del objeto para no modificar este fuera de la función
+    listaClon.push(number);
+    console.log(listaClon); //[ 1, 2, 3, 4, 5, 435 ]
+}
+referencia2(listParam, number);
+console.log(listParam); //[ 1, 2, 3, 4, 5 ] -> el objeto no se ve afectado fuera de la función
+/* DIFICULTAD EXTRA (opcional):
+* Crea dos programas que reciban dos parámetros (cada uno) definidos como variables anteriormente.
+* - Cada programa recibe, en un caso, dos parámetros por valor, y en otro caso, por referencia.
+*   Estos parámetros los intercambia entre ellos en su interior, los retorna, y su retorno
+*   se asigna a dos variables diferentes a las originales. A continuación, imprime el valor de las
+*   variables originales y las nuevas, comprobando que se ha invertido su valor en las segundas.
+*   Comprueba también que se ha conservado el valor original en las primeras.
+*/
+//por valor
+let v1 = 40;
+let v2 = 350;
+function programa1(valor1, valor2) {
+    let aux = valor1;
+    valor1 = valor2;
+    valor2 = aux;
+    return [valor1, valor2];
+}
+[v1, v2] = programa1(v1, v2);
+console.log(v1); //350
+console.log(v2); //40
+//por referencia
+let object1 = [1, 2, 3, 4, 5];
+let object2 = [6, 7, 8, 9, 10];
+function programa2(objeto1, objeto2) {
+    let aux = objeto1; //se guarda el puntero del objeto1
+    objeto1 = objeto2;
+    objeto2 = aux;
+    return [objeto1, objeto2];
+}
+[object1, object2] = programa2(object1, object2);
+console.log('objeto1: ', object1); //objeto1:  [ 6, 7, 8, 9, 10 ]
+console.log(object2); //[ 1, 2, 3, 4, 5 ]
